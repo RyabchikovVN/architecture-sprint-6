@@ -1,0 +1,55 @@
+# schema.graphql
+type Client {
+  id: ID!
+  name: String!
+  age: Int!
+}
+
+type Document {
+  id(id: ID!): Client
+  type: String!
+  number: String!
+  issueDate: String!
+  expiryDate: String!
+}
+
+type Relative {
+  id(id: ID!): Client
+  relationType: String!
+  name: String!
+  age: Int!
+}
+
+============== query ================
+
+query Client {
+  Client {
+    name
+    age
+  }
+}
+
+query ClientNameAndDocuments {
+  Client {
+    name
+    Document {
+      type
+      number
+      issueDate
+      expiryDate
+    }
+  }
+}
+
+query ClientNameAndRelatives {
+  Client {
+    name
+    Relative {
+      name
+      relationType
+      age
+    }
+  }
+}
+
+============== query ================
